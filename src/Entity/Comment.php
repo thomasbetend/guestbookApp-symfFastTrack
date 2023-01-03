@@ -30,6 +30,9 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private ?Conference $conference = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photofilename = null;
+
     public function __toString()
     {
         return (string) $this->getEmail();
@@ -96,6 +99,18 @@ class Comment
     public function setConference(?Conference $conference): self
     {
         $this->conference = $conference;
+
+        return $this;
+    }
+
+    public function getPhotofilename(): ?string
+    {
+        return $this->photofilename;
+    }
+
+    public function setPhotofilename(?string $photofilename): self
+    {
+        $this->photofilename = $photofilename;
 
         return $this;
     }
